@@ -13,6 +13,10 @@ logger = logging.getLogger(__name__)
 if sys.stderr is None:
     sys.stderr = open(os.devnull, 'w')
 
+
+__version__ = "0.0.0"
+# SKIP Version completely
+"""
 # Evaluate version and log package version
 try:
     from ftrack_utils.version import get_version
@@ -56,9 +60,9 @@ if __version__ == "0.0.0":
                 logging.warning("Version string not found in __version__.py")
 
     except Exception as e:
-        #logging.warning(f"Error reading version file: {e}")
+        logging.warning(f"Error reading version file: {e}")
         __version__ = "0.0.0"
-
+"""
 
 _resource = {"loaded": False}
 
