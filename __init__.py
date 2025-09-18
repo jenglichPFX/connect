@@ -56,7 +56,7 @@ if __version__ == "0.0.0":
                 logging.warning("Version string not found in __version__.py")
 
     except Exception as e:
-        logging.warning(f"Error reading version file: {e}")
+        #logging.warning(f"Error reading version file: {e}")
         __version__ = "0.0.0"
 
 
