@@ -12,7 +12,7 @@ except ImportError:
 import qtawesome as qta
 
 import ftrack_api.exception
-from ftrack_connect import load_fonts_resource
+from connect import load_fonts_resource
 
 # We need to force load the icons or ftrack.<icon> won't be available
 # not sure why is the case, likely due to be in threded function.

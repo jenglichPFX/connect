@@ -10,22 +10,22 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
 
-from ftrack_connect.utils.thread import qt_main_thread
-from ftrack_connect.utils.plugin import PLUGIN_DIRECTORIES
+from connect.utils.thread import qt_main_thread
+from connect.utils.plugin import PLUGIN_DIRECTORIES
 
-from ftrack_connect.ui.widget.overlay import BlockingOverlay, BusyOverlay
-import ftrack_connect.ui.application
+from connect.ui.widget.overlay import BlockingOverlay, BusyOverlay
+import connect.ui.application
 
 from ftrack_utils.decorators import asynchronous
 from ftrack_utils.usage import get_usage_tracker
 
-from ftrack_connect.plugin_manager.overlay import InstallerBlockingOverlay
-from ftrack_connect.plugin_manager.processor import PluginProcessor, ROLES
-from ftrack_connect.plugin_manager.plugin_list import DndPluginList
-from ftrack_connect.plugin_manager.welcome import WelcomeDialog
+from connect.plugin_manager.overlay import InstallerBlockingOverlay
+from connect.plugin_manager.processor import PluginProcessor, ROLES
+from connect.plugin_manager.plugin_list import DndPluginList
+from connect.plugin_manager.welcome import WelcomeDialog
 
 
-class PluginManager(ftrack_connect.ui.application.ConnectWidget):
+class PluginManager(connect.ui.application.ConnectWidget):
     '''Show and manage plugin installations.'''
 
     name = 'Plugins'

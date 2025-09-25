@@ -14,14 +14,14 @@ import ftrack_api.event.base
 from ftrack_utils.decorators import asynchronous
 from ftrack_utils.usage import get_usage_tracker
 
-from ftrack_connect.ui.widget import (
+from connect.ui.widget import (
     action_item,
     flow_layout,
     entity_selector,
     overlay,
 )
 
-from ftrack_connect.utils.preferences import (
+from connect.utils.preferences import (
     get_connect_preferences,
     write_connect_prefs_file_path,
 )

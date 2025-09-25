@@ -7,7 +7,7 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
 
-import ftrack_connect.ui.widget.indicator
+import connect.ui.widget.indicator
 
 logger = logging.getLogger(__name__)
 
@@ -201,7 +201,7 @@ class BusyOverlay(BlockingOverlay):
         '''Initialise with *parent* and busy *message*.'''
         super(BusyOverlay, self).__init__(parent=parent, message=message)
 
-        self.indicator = ftrack_connect.ui.widget.indicator.BusyIndicator()
+        self.indicator = connect.ui.widget.indicator.BusyIndicator()
         self.indicator.setFixedSize(85, 85)
 
         self.icon.hide()

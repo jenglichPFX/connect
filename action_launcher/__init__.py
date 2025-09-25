@@ -6,8 +6,8 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
-from ftrack_connect.ui.application import ConnectWidget
-from ftrack_connect.action_launcher.actions import Actions
+from connect.ui.application import ConnectWidget
+from connect.action_launcher.actions import Actions
 
 
 class ActionLauncherWidget(ConnectWidget):

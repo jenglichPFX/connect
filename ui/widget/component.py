@@ -13,8 +13,8 @@ except ImportError:
 
 import qtawesome as qta
 
-import ftrack_connect.ui.widget.line_edit
-import ftrack_connect.ui.widget.label
+import connect.ui.widget.line_edit
+import connect.ui.widget.label
 
 
 class Component(QtWidgets.QWidget):
@@ -29,7 +29,7 @@ class Component(QtWidgets.QWidget):
         super(Component, self).__init__(parent=parent)
         self.setLayout(QtWidgets.QVBoxLayout())
 
-        self.componentNameEdit = ftrack_connect.ui.widget.line_edit.LineEdit()
+        self.componentNameEdit = connect.ui.widget.line_edit.LineEdit()
         self.componentNameEdit.setPlaceholderText('Enter component name')
         self.componentNameEdit.textChanged.connect(self.nameChanged)
 
@@ -43,7 +43,7 @@ class Component(QtWidgets.QWidget):
         self.removeAction.setStatusTip('Remove component.')
         self.componentNameEdit.addAction(self.removeAction)
 
-        self.resourceInformation = ftrack_connect.ui.widget.label.Label()
+        self.resourceInformation = connect.ui.widget.label.Label()
         self.layout().addWidget(self.resourceInformation)
 
         # Set initial values.

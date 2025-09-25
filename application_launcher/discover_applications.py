@@ -7,12 +7,12 @@ import platform
 from collections import defaultdict
 import logging
 
-from ftrack_connect.utils.environment import (
+from connect.utils.environment import (
     get_connect_extensions_path_from_environment,
 )
 from ftrack_framework_core import registry
 
-from ftrack_connect.application_launcher import (
+from connect.application_launcher import (
     ApplicationStore,
     ApplicationLaunchAction,
     ApplicationLauncher,

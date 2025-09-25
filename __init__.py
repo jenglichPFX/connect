@@ -44,7 +44,7 @@ if __version__ == "0.0.0":
         base_path = os.path.abspath(".")
 
     version_file_path = os.path.join(
-        base_path, 'ftrack_connect', '__version__.py'
+        base_path, 'connect', '__version__.py'
     )
 
     try:
@@ -117,7 +117,7 @@ def load_fonts_resource():
         # If the application is run as a bundle, the pyInstaller bootloader
         # extends the sys module by a flag frozen=True and sets the app
         # path into variable _MEIPASS.
-        icon_fonts_path = os.path.join(sys._MEIPASS, "ftrack_connect", "fonts")
+        icon_fonts_path = os.path.join(sys._MEIPASS, "connect", "fonts")
     else:
         # Get the directory of the current script
         current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -134,7 +134,7 @@ def set_up_certificates():
         # extends the sys module by a flag frozen=True and sets the app
         # path into variable _MEIPASS.
         connect_cert_dir = os.path.join(
-            sys._MEIPASS, "ftrack_connect", "certs"
+            sys._MEIPASS, "connect", "certs"
         )
 
         # Set the path to certificate file in resource folder. This allows requests

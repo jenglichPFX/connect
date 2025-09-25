@@ -12,8 +12,8 @@ except ImportError:
 
 import qtawesome as qta
 
-import ftrack_connect.ui.model.entity_tree
-import ftrack_connect.ui.widget.overlay
+import connect.ui.model.entity_tree
+import connect.ui.widget.overlay
 
 
 class EntityBrowser(QtWidgets.QDialog):
@@ -84,9 +84,9 @@ class EntityBrowser(QtWidgets.QDialog):
 
         self.contentSplitter.addWidget(self.view)
 
-        proxy = ftrack_connect.ui.model.entity_tree.EntityTreeProxyModel(self)
-        model = ftrack_connect.ui.model.entity_tree.EntityTreeModel(
-            root=ftrack_connect.ui.model.entity_tree.ItemFactory(
+        proxy = connect.ui.model.entity_tree.EntityTreeProxyModel(self)
+        model = connect.ui.model.entity_tree.EntityTreeModel(
+            root=connect.ui.model.entity_tree.ItemFactory(
                 self._session, self._root
             ),
             parent=self,
@@ -111,7 +111,7 @@ class EntityBrowser(QtWidgets.QDialog):
 
         self.layout().addLayout(self.footerLayout)
 
-        self.overlay = ftrack_connect.ui.widget.overlay.BusyOverlay(
+        self.overlay = connect.ui.widget.overlay.BusyOverlay(
             self.view, message='Loading'
         )
 

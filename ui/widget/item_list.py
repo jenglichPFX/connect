@@ -6,7 +6,7 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore
 
-import ftrack_connect.ui.widget.list
+import connect.ui.widget.list
 
 
 class ItemList(QtWidgets.QFrame):
@@ -35,7 +35,7 @@ class ItemList(QtWidgets.QFrame):
         )
 
         # List
-        self.list = ftrack_connect.ui.widget.list.List()
+        self.list = connect.ui.widget.list.List()
         self.layout().addWidget(self.list, stretch=1)
 
         self.layout().setContentsMargins(5, 5, 5, 5)

@@ -8,7 +8,7 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
 
-import ftrack_connect.worker
+import connect.worker
 import qtawesome as qta
 
 
@@ -421,7 +421,7 @@ class EntityTreeModel(QtCore.QAbstractItemModel):
             self.loadStarted.emit()
             startIndex = len(item.children)
 
-            self._worker = ftrack_connect.worker.Worker(
+            self._worker = connect.worker.Worker(
                 item.fetchChildren, parent=self
             )
             self._worker.start()

@@ -7,7 +7,7 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
 
-from ftrack_connect.ui.widget.overlay import BlockingOverlay
+from connect.ui.widget.overlay import BlockingOverlay
 
 
 class InstallerBlockingOverlay(BlockingOverlay):

@@ -10,23 +10,23 @@ import shutil
 import logging
 import qtawesome as qta
 
-from ftrack_connect import DEFAULT_INTEGRATIONS_REPO_URL
+from connect import DEFAULT_INTEGRATIONS_REPO_URL
 
 try:
     from PySide6 import QtWidgets, QtCore, QtGui
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
 
-from ftrack_connect.utils.plugin import (
+from connect.utils.plugin import (
     PLUGIN_DIRECTORIES,
     get_plugin_json_url_from_environment,
     fetch_github_releases,
     get_plugin_data,
     get_platform_identifier,
 )
-from ftrack_connect.utils.thread import qt_main_thread
+from connect.utils.thread import qt_main_thread
 
-from ftrack_connect.plugin_manager.processor import (
+from connect.plugin_manager.processor import (
     STATUSES,
     ROLES,
     STATUS_ICONS,

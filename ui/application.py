@@ -30,35 +30,35 @@ except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
     from PySide2.QtWidgets import QAction
 
-from ftrack_connect import load_fonts_resource
-import ftrack_connect
-import ftrack_connect.event_hub_thread as _event_hub_thread
-import ftrack_connect.error
-from ftrack_connect.utils.plugin import (
+from connect import load_fonts_resource
+import connect
+import connect.event_hub_thread as _event_hub_thread
+import connect.error
+from connect.utils.plugin import (
     get_default_plugin_directory,
     get_plugins_from_path,
     get_plugin_data,
     PLUGIN_DIRECTORIES,
 )
-from ftrack_connect.utils.credentials import (
+from connect.utils.credentials import (
     load_credentials,
     store_credentials,
 )
-from ftrack_connect.utils.directory import open_directory
-import ftrack_connect.ui.theme
-import ftrack_connect.ui.widget.overlay
-from ftrack_connect.ui.widget import uncaught_error as _uncaught_error
-from ftrack_connect.ui.widget import tab_widget as _tab_widget
-from ftrack_connect.ui.widget import login as _login
-from ftrack_connect.ui.widget import about as _about
-from ftrack_connect.ui import login_tools as _login_tools
-from ftrack_connect.ui.widget import configure_scenario as _scenario_widget
-import ftrack_connect.utils.log
-from ftrack_connect.application_launcher.discover_applications import (
+from connect.utils.directory import open_directory
+import connect.ui.theme
+import connect.ui.widget.overlay
+from connect.ui.widget import uncaught_error as _uncaught_error
+from connect.ui.widget import tab_widget as _tab_widget
+from connect.ui.widget import login as _login
+from connect.ui.widget import about as _about
+from connect.ui import login_tools as _login_tools
+from connect.ui.widget import configure_scenario as _scenario_widget
+import connect.utils.log
+from connect.application_launcher.discover_applications import (
     DiscoverApplications,
 )
 
-from ftrack_connect.utils.plugin import create_target_plugin_directory
+from connect.utils.plugin import create_target_plugin_directory
 
 
 class ConnectWidgetPlugin(object):
@@ -205,7 +205,7 @@ class Application(QtWidgets.QMainWindow):
         self._application_launcher = None
 
         self.setObjectName('ftrack-connect-window')
-        self.setWindowTitle('ftrack Connect')
+        self.setWindowTitle('Connect')
         self.resize(450, 700)
         self.move(50, 50)
 
@@ -298,7 +298,7 @@ class Application(QtWidgets.QMainWindow):
 
         metadata = {
             'label': 'ftrack-connect',
-            'version': ftrack_connect.__version__,
+            'version': connect.__version__,
             'os': platform.platform(),
             'session-duration': connect_stopped_time
             - self.__connect_start_time,
@@ -339,8 +339,8 @@ class Application(QtWidgets.QMainWindow):
         qtawesome_style = getattr(qta, theme)
         qtawesome_style(QtWidgets.QApplication.instance())
 
-        ftrack_connect.ui.theme.applyFont()
-        ftrack_connect.ui.theme.applyTheme(self, self.theme(), 'cleanlooks')
+        connect.ui.theme.applyFont()
+        connect.ui.theme.applyTheme(self, self.theme(), 'cleanlooks')
 
     def _onConnectTopicEvent(self, event):
         '''Generic callback for all ftrack.connect events.
@@ -447,7 +447,7 @@ class Application(QtWidgets.QMainWindow):
 
     def _show_login_widget(self):
         '''Show the login widget.'''
-        self._login_overlay = ftrack_connect.ui.widget.overlay.CancelOverlay(
+        self._login_overlay = connect.ui.widget.overlay.CancelOverlay(
             self._login_widget, message='<h2>Signing in<h2/>'
         )
 
@@ -500,11 +500,11 @@ class Application(QtWidgets.QMainWindow):
                 auto_connect_event_hub=True, plugin_paths=api_plugin_paths
             )
         except Exception as error:
-            raise ftrack_connect.error.ParseError(error)
+            raise connect.error.ParseError(error)
 
         # Need to reconfigure logging after session is created.
-        ftrack_connect.utils.log.configure_logging(
-            'ftrack_connect', level=self._log_level, notify=False
+        connect.utils.log.configure_logging(
+            'connect', level=self._log_level, notify=False
         )
 
         # Listen to events using the new API event hub. This is required to
@@ -524,7 +524,7 @@ class Application(QtWidgets.QMainWindow):
                 session=session,
                 default_data=dict(
                     app="Connect",
-                    version=ftrack_connect.__version__,
+                    version=connect.__version__,
                     os=platform.platform(),
                     python_version=platform.python_version(),
                 ),
@@ -937,14 +937,14 @@ class Application(QtWidgets.QMainWindow):
         try:
             pluginInstance = self._widget_plugin_instances[plugin]
         except KeyError:
-            raise ftrack_connect.error.ConnectError(
+            raise connect.error.ConnectError(
                 'Plugin "{0}" not found.'.format(plugin)
             )
 
         try:
             method = getattr(pluginInstance, action)
         except AttributeError:
-            raise ftrack_connect.error.ConnectError(
+            raise connect.error.ConnectError(
                 'Method "{0}" not found on "{1}" plugin({2}).'.format(
                     action, plugin, pluginInstance
                 )
@@ -1041,8 +1041,8 @@ class Application(QtWidgets.QMainWindow):
 
     def _show_about(self):
         '''Display window with about information.'''
-        from ftrack_connect.plugin_manager import PluginManager
-        from ftrack_connect.plugin_manager.processor import ROLES, STATUSES
+        from connect.plugin_manager import PluginManager
+        from connect.plugin_manager.processor import ROLES, STATUSES
 
         self.focus()
 
@@ -1073,7 +1073,7 @@ class Application(QtWidgets.QMainWindow):
 
         connect_version_data = {
             'name': 'ftrack connect',
-            'version': ftrack_connect.__version__,
+            'version': connect.__version__,
             'core': True,
             'debug_information': debug_information,
         }
@@ -1185,7 +1185,7 @@ class Application(QtWidgets.QMainWindow):
         '''Append action launcher widget to list of build in
         plugins to add on discovery together with user plugins.'''
 
-        from ftrack_connect.action_launcher import ActionLauncherWidget
+        from connect.action_launcher import ActionLauncherWidget
 
         # Add together with discovered widgets
         self._builtin_widget_plugins.append(ActionLauncherWidget)
@@ -1194,7 +1194,7 @@ class Application(QtWidgets.QMainWindow):
         '''Append plugin manager widget to list of build in
         plugins to add on discovery together with user plugins.'''
 
-        from ftrack_connect.plugin_manager import PluginManager
+        from connect.plugin_manager import PluginManager
 
         if (
             os.environ.get('FTRACK_CONNECT_DISABLE_PLUGIN_MANAGER') or ''

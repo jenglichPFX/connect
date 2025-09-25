@@ -9,7 +9,7 @@ import logging
 import shutil
 
 
-logger = logging.getLogger('ftrack_connect.utils.credentials')
+logger = logging.getLogger('connect.utils.credentials')
 
 
 def get_credentials_file_path():

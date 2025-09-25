@@ -15,7 +15,7 @@ try:
     from PySide6 import QtWidgets, QtCore, QtGui
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
-from ftrack_connect.utils.plugin import get_platform_identifier
+from connect.utils.plugin import get_platform_identifier
 
 logger = logging.getLogger(__name__)
 

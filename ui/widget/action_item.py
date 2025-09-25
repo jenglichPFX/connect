@@ -14,7 +14,7 @@ except ImportError:
 
 import ftrack_api.event.base
 from ftrack_utils.decorators import asynchronous
-from ftrack_connect.ui.widget.thumbnail import ActionIcon
+from connect.ui.widget.thumbnail import ActionIcon
 
 # We need to force load the icons or ftrack.<icon> won't be available
 # not sure why is the case, likely due to be in threded function.

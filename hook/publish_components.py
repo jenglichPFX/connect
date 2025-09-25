@@ -10,7 +10,7 @@ import platformdirs
 import ftrack_api.session
 
 
-logger = logging.getLogger('ftrack_connect.publish-components')
+logger = logging.getLogger('connect.publish-components')
 
 
 def publish_components(event, session=None):

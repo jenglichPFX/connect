@@ -10,8 +10,8 @@ except ImportError:
 
 from ftrack_utils.decorators import asynchronous
 
-import ftrack_connect
-from ftrack_connect.utils.plugin import (
+import connect
+from connect.utils.plugin import (
     get_plugin_json_url_from_environment,
 )
 
@@ -142,7 +142,7 @@ class WelcomeDialog(QtWidgets.QDialog):
         self.installing.connect(self._on_plugins_installing)
         self._restart_button.clicked.connect(self._on_restart_callback)
 
-        self._overlay = ftrack_connect.ui.widget.overlay.BusyOverlay(
+        self._overlay = connect.ui.widget.overlay.BusyOverlay(
             self, message='Installing'
         )
         self._overlay.hide()

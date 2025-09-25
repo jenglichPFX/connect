@@ -4,7 +4,7 @@
 import logging
 
 from ftrack_utils.decorators import asynchronous
-from ftrack_connect.ui.widget import item_selector as _item_selector
+from connect.ui.widget import item_selector as _item_selector
 
 
 class AssetSelector(_item_selector.ItemSelector):

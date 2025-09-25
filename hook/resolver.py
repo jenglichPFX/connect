@@ -103,7 +103,7 @@ class Resolver(object):
 def register(session, **kw):
     '''Register hooks.'''
 
-    logger = logging.getLogger('ftrack_connect.resolver.register')
+    logger = logging.getLogger('connect.resolver.register')
 
     # Validate that session is an instance of ftrack_api.session.Session. If
     # not, assume that register is being called from an old or incompatible API

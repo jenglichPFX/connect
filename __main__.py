@@ -9,7 +9,7 @@ import signal
 import os
 import importlib
 
-from ftrack_connect.utils.plugin import (
+from connect.utils.plugin import (
     create_target_plugin_directory,
     PLUGIN_DIRECTORIES,
 )
@@ -30,15 +30,15 @@ def main_connect(arguments=None):
 
         is_pyside2 = True
 
-    from ftrack_connect import load_fonts_resource
-    import ftrack_connect.utils.log
-    import ftrack_connect.singleton
+    from connect import load_fonts_resource
+    import connect.utils.log
+    import connect.singleton
 
     # Bootstrap hooks
-    import ftrack_connect.hook
+    import connect.hook
 
-    import ftrack_connect.ui.application
-    import ftrack_connect.ui.theme
+    import connect.ui.application
+    import connect.ui.theme
 
     parser = argparse.ArgumentParser(prog='ftrack-connect')
 
@@ -87,8 +87,8 @@ def main_connect(arguments=None):
 
     namespace = parser.parse_args(arguments)
 
-    ftrack_connect.utils.log.configure_logging(
-        'ftrack_connect', level=loggingLevels[namespace.verbosity]
+    connect.utils.log.configure_logging(
+        'connect', level=loggingLevels[namespace.verbosity]
     )
 
     # Make sure plugin directory is created
@@ -99,12 +99,12 @@ def main_connect(arguments=None):
         lockfile = os.path.join(
             platformdirs.user_data_dir('ftrack-connect', 'ftrack'), 'lock'
         )
-        logger = logging.getLogger('ftrack_connect')
+        logger = logging.getLogger('connect')
         try:
-            single_instance = ftrack_connect.singleton.SingleInstance(
+            single_instance = connect.singleton.SingleInstance(
                 '', lockfile
             )
-        except ftrack_connect.singleton.SingleInstanceException:
+        except connect.singleton.SingleInstanceException:
             logger.error(
                 'Lockfile found: {}\nIs Connect already running?\nClose Connect,'
                 ' remove lockfile or pass --allow-multiple and retry.'.format(
@@ -153,7 +153,7 @@ def main_connect(arguments=None):
     )
 
     # Construct main connect window and apply theme.
-    connectWindow = ftrack_connect.ui.application.Application(
+    connectWindow = connect.ui.application.Application(
         theme=str(namespace.theme),
         instance=single_instance,
         log_level=loggingLevels[namespace.verbosity],

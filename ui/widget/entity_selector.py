@@ -8,8 +8,8 @@ except ImportError:
 
 import qtawesome as qta
 
-from ftrack_connect.ui.widget import entity_path as _entity_path
-from ftrack_connect.ui.widget import entity_browser as _entity_browser
+from connect.ui.widget import entity_path as _entity_path
+from connect.ui.widget import entity_browser as _entity_browser
 
 
 class ContextList(QtWidgets.QComboBox):

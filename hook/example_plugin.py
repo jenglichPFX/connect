@@ -8,12 +8,12 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore
 
-import ftrack_connect.ui.application
+import connect.ui.application
 
-logger = logging.getLogger('ftrack_connect.plugin.actions')
+logger = logging.getLogger('connect.plugin.actions')
 
 
-class ExamplePlugin(ftrack_connect.ui.application.ConnectWidget):
+class ExamplePlugin(connect.ui.application.ConnectWidget):
     '''Base widget for ftrack connect actions plugin.'''
 
     icon = ':ftrack/image/default/ftrackLogoColor'
@@ -41,5 +41,5 @@ def register(session, **kw):
         return
 
     # #  Uncomment to register plugin
-    # plugin = ftrack_connect.ui.application.ConnectWidgetPlugin(ExamplePlugin)
+    # plugin = connect.ui.application.ConnectWidgetPlugin(ExamplePlugin)
     # plugin.register(session, priority=10)

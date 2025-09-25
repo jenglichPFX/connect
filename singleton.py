@@ -11,7 +11,7 @@ import tempfile
 if sys.platform != 'win32':
     import fcntl
 
-logger = logging.getLogger('ftrack_connect.singleton')
+logger = logging.getLogger('connect.singleton')
 
 
 class SingleInstanceException(BaseException):

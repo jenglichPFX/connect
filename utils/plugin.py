@@ -13,7 +13,7 @@ from packaging.version import parse
 from packaging.specifiers import SpecifierSet
 
 
-from ftrack_connect import (
+from connect import (
     INCOMPATIBLE_PLUGINS,
     DEPRECATED_PLUGINS,
 )

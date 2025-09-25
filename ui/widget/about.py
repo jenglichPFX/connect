@@ -13,10 +13,10 @@ except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui, __version__ as QtVersion
 
 
-from ftrack_connect.utils.log import get_log_directory
+from connect.utils.log import get_log_directory
 
-from ftrack_connect.utils.directory import open_directory
-from ftrack_connect.utils.plugin import PLUGIN_DIRECTORIES
+from connect.utils.directory import open_directory
+from connect.utils.plugin import PLUGIN_DIRECTORIES
 
 
 class AboutDialog(QtWidgets.QDialog):
@@ -137,7 +137,7 @@ class AboutDialog(QtWidgets.QDialog):
         print(f'app is frozen {is_frozen}')
         app_name = 'ftrack-connect'
         if is_frozen:
-            app_name = 'ftrack_connect'
+            app_name = 'connect'
 
         content = textwrap.dedent(
             '''\
@@ -146,8 +146,8 @@ class AboutDialog(QtWidgets.QDialog):
         Type=Application
         Version=1.0
         Icon={0}/logo.svg
-        Name=ftrack Connect
-        Comment=ftrack Connect
+        Name=Connect
+        Comment=Connect
         Exec="{0}/{1}"
         StartupNotify=true
         Terminal=false

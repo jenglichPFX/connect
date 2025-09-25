@@ -6,7 +6,7 @@ import os
 
 import platform
 import ftrack_api
-from ftrack_connect.utils.directory import open_directory
+from connect.utils.directory import open_directory
 
 
 class OpenComponentDirectoryAction(object):
@@ -129,7 +129,7 @@ class OpenComponentDirectoryAction(object):
 def register(session, **kw):
     '''Register hooks.'''
 
-    logger = logging.getLogger('ftrack_connect:open-component-directory')
+    logger = logging.getLogger('connect:open-component-directory')
 
     # Validate that session is an instance of ftrack_api.session.Session. If
     # not, assume that register is being called from an old or incompatible API

@@ -12,7 +12,7 @@ try:
 except ImportError:
     from PySide2 import QtWidgets, QtCore, QtGui
 
-import ftrack_connect.worker
+import connect.worker
 
 # Cache of thumbnail images.
 IMAGE_CACHE = dict()
@@ -45,7 +45,7 @@ class Base(QtWidgets.QLabel):
                 app = QtWidgets.QApplication.instance()
                 app.processEvents()
 
-        self._worker = ftrack_connect.worker.Worker(
+        self._worker = connect.worker.Worker(
             self._download, [reference], parent=self
         )
 

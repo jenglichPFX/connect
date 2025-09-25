@@ -8,11 +8,11 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
-import ftrack_connect.ui.widget.component
-import ftrack_connect.ui.widget.item_list
+import connect.ui.widget.component
+import connect.ui.widget.item_list
 
 
-class ComponentsList(ftrack_connect.ui.widget.item_list.ItemList):
+class ComponentsList(connect.ui.widget.item_list.ItemList):
     '''List components.
 
     The component list is managed using an internal model.
@@ -38,13 +38,13 @@ class ComponentsList(ftrack_connect.ui.widget.item_list.ItemList):
         '''Return component widget for *item*.
 
         *item* should be a mapping of keyword arguments to pass to
-        :py:class:`ftrack_connect.widget.component.Component`.
+        :py:class:`connect.widget.component.Component`.
 
         '''
         if item is None:
             item = {}
 
-        return ftrack_connect.ui.widget.component.Component(**item)
+        return connect.ui.widget.component.Component(**item)
 
     def addItem(self, item, row=None):
         '''Add *item* at *row*.
